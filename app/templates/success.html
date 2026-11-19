@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Success Page{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="mainblock">
+        <h2>Job Post Details</h2>
+        <div class="card-board">
+            <h5 class="card-title">{{ jobPost.postprofile }}</h5>
+            <p class="card-text"><strong>Job-Id:</strong> {{ jobPost.postid }}</p>
+            <p class="card-text"><strong>Description:</strong> {{ jobPost.postdesc }}</p>
+            <p class="card-text"><strong>Experience Required:</strong> {{ jobPost.reqExperience }} years</p>
+            <div class="card-text">
+                <strong>Tech Stack Required:</strong>
+                <ul>
+                    {% for tech in jobPost.posttechstack %}
+                    <li>{{ tech }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Post a Job{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="card">
+        <h2>Post A New Job</h2>
+        <form action="/Handleform" method="post" id="Jobpostform">
+            <div class="form-group">
+                <label for="postprofile">Post Profile</label>
+                <input type="text" id="postprofile" name="postprofile" maxlength="100" required>
+            </div>
+
+            <div class="form-group">
+                <label for="postdesc">Post Description</label>
+                <textarea id="postdesc" name="postdesc" rows="4" maxlength="2000" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="reqExperience">Required Experience (years)</label>
+                <input type="number" id="reqExperience" name="reqExperience" min="0" max="60" required>
+            </div>
+
+            <div class="form-group">
+                <label for="posttechStack">Tech Stack</label>
+                <select multiple class="form-select" id="posttechStack" name="posttechstack" required>
+                    {% for option in tech_options %}
+                    <option value="{{ option }}">{{ option }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

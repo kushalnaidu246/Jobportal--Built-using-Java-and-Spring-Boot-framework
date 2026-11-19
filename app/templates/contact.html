@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Contact us{% endblock %}
+{% block content %}
+<main>
+            <div class="contact-info">
+                <h2>Get in Touch</h2>
+                <p>If you have any questions or feedback, feel free to contact us using the information below:</p>
+                <ul>
+                    <li><strong>Email:</strong> <a href="mailto:contact@HelloJobPortal.com">contact@HelloJobPortal.com</a></li>
+                    <li><strong>Phone:</strong> +91 234-567-890</li>
+                    <li><strong>Address:</strong> 123 Main St, Hyderabad, India</li>
+                </ul>
+            </div>
+    
+            <div class="contact-form">
+                <h2>Contact Form</h2>
+                <form action="#" method="POST"> <!-- Specify action and method -->
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" name="name" required>
+    
+                    <label for="email">Your Email:</label>
+                    <input type="email" id="email" name="email" required>
+    
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+    
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </main>
+{% endblock %}

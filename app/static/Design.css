@@ -28,7 +28,7 @@ header{
 }
 
 .logo-container {
-    background-image: url('logo_job.png'); /* Path to your logo image */
+    background-image: url('/static/logo_job.png'); /* Path to your logo image */
     background-size: contain; /* Ensure the entire image is visible */
     background-repeat: no-repeat; /* Prevent the image from repeating */
     background-position: center; /* Center the image horizontally and vertically */
