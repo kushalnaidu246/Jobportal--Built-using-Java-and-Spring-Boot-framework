@@ -14,7 +14,8 @@
     
             <div class="contact-form">
                 <h2>Contact Form</h2>
-                <form action="#" method="POST"> <!-- Specify action and method -->
+                {% if sent %}<p class="success-note"><strong>Thank you! Your message was sent.</strong></p>{% endif %}
+                <form action="/contact" method="POST">
                     <label for="name">Your Name:</label>
                     <input type="text" id="name" name="name" required>
     

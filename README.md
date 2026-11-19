@@ -4,11 +4,12 @@ HelloJobportal is a website that helps people find jobs and companies hire new t
 Key Features:
 
 Posting Jobs: Companies can advertise job openings with details like experience needed and skills required.
-Finding Jobs: People looking for work can search for jobs that match their skills and apply for them.
-Works Everywhere: The website adjusts to fit different screen sizes, so it's easy to use on phones, tablets, and computers.
-Easy Updates: The website can show different information without needing to reload the whole page, which makes it fast and smooth to use.
-Nice Icons: We use special icons called FontAwesome to make the site look nicer and make it easier to navigate.
-Runs Fast: The technical stuff behind the scenes is done using FastAPI, so everything works quickly and smoothly.
+Viewing Jobs: Everyone can see the list of posted jobs.
+Works Everywhere: The pages adjust to fit different screen sizes.
+Info Pages: Home, FAQ, About us and Contact us pages.
+
+Coming later: database storage, login and sign-up, searching for jobs, and applying for jobs.
+
 Contribution:
 We welcome help from anyone who wants to make HelloJobportal better. Whether you're good at making things look nice, adding new features, or making things run faster, we'd love to have your help!
 

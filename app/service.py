@@ -14,3 +14,6 @@ class PortalService:
 
     def add_job_post(self, profile: str, desc: str, experience: int, techstack: list[str]) -> JobPost:
         return self.repo.add(profile.strip(), desc.strip(), experience, techstack)
+
+    def add_message(self, name: str, email: str, message: str) -> None:
+        self.repo.add_message(name, email, message)

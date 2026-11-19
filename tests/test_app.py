@@ -60,3 +60,25 @@ def test_invalid_form_rejected():
 
 def test_unknown_job_404():
     assert client.get("/success/9999").status_code == 404
+
+
+def test_contact_form_flow():
+    resp = client.post(
+        "/contact",
+        data={"name": "Sam", "email": "sam@example.com", "message": "Hi"},
+        follow_redirects=True,
+    )
+    assert resp.status_code == 200
+    assert "Your message was sent" in resp.text
+    assert "Your message was sent" not in client.get("/contact").text
+
+
+def test_contact_rejects_bad_email():
+    resp = client.post("/contact", data={"name": "Sam", "email": "nope", "message": "Hi"})
+    assert resp.status_code == 422
+
+
+def test_friendly_404_page():
+    resp = client.get("/does-not-exist")
+    assert resp.status_code == 404
+    assert "Page not found" in resp.text and "<html" in resp.text

@@ -8,6 +8,7 @@ class PortalRepo:
 
     def __init__(self) -> None:
         self._lock = Lock()
+        self._messages: list[dict] = []
         self._jobs: list[JobPost] = [
             JobPost(
                 postid=1,
@@ -53,3 +54,8 @@ class PortalRepo:
             )
             self._jobs.append(job)
             return job
+
+    def add_message(self, name: str, email: str, message: str) -> None:
+        """Store a contact-form message (in memory only)."""
+        with self._lock:
+            self._messages.append({"name": name, "email": email, "message": message})

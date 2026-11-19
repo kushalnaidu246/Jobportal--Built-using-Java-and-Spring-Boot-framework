@@ -4,6 +4,7 @@ from typing import Annotated
 from fastapi import Depends, FastAPI, Form, HTTPException, Request
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
+from starlette.exceptions import HTTPException as StarletteHTTPException
 from fastapi.templating import Jinja2Templates
 
 from .repository import PortalRepo
@@ -84,10 +85,30 @@ def faq(request: Request):
 
 
 @app.get("/contact", response_class=HTMLResponse)
-def contact(request: Request):
-    return page(request, "contact.html")
+def contact(request: Request, sent: int = 0):
+    return page(request, "contact.html", sent=bool(sent))
+
+
+@app.post("/contact")
+def send_contact(
+    service: Service,
+    name: Annotated[str, Form(min_length=1, max_length=100)],
+    email: Annotated[str, Form(min_length=3, max_length=200, pattern=r"^[^@\s]+@[^@\s]+\.[^@\s]+$")],
+    message: Annotated[str, Form(min_length=1, max_length=2000)],
+):
+    service.add_message(name.strip(), email.strip(), message.strip())
+    return RedirectResponse("/contact?sent=1", status_code=303)
 
 
 @app.get("/about", response_class=HTMLResponse)
 def about(request: Request):
     return page(request, "about.html")
+
+
+@app.exception_handler(StarletteHTTPException)
+async def http_error(request: Request, exc: StarletteHTTPException):
+    """Show a friendly HTML page for 404 and other HTTP errors."""
+    text = "Page not found" if exc.status_code == 404 else str(exc.detail)
+    return templates.TemplateResponse(
+        request, "error.html", {"code": exc.status_code, "text": text}, status_code=exc.status_code
+    )

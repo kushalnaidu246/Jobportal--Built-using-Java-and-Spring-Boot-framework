@@ -274,3 +274,42 @@ main {
     border-radius: 3px;
     box-sizing: border-box;
 }
+
+
+/* Job list grid (used by All Jobs) */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.row-cols-2 > .col {
+    flex: 1 1 calc(50% - 20px);
+    min-width: 280px;
+}
+.card.bg-dark {
+    background: #212529;
+    color: #fff;
+    border-radius: 8px;
+}
+.card-body {
+    padding: 16px;
+}
+.text-center {
+    text-align: center;
+}
+
+/* Messages and error page */
+.success-note {
+    color: #146c2e;
+    background: #e6f4ea;
+    padding: 10px;
+    border-radius: 6px;
+}
+.error-page {
+    text-align: center;
+    padding: 40px 16px;
+}
+.error-page h1 {
+    font-size: 4rem;
+    margin: 0;
+}
